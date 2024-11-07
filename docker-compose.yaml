@@ -20,7 +20,7 @@ services:
   mock_rtsp_client:
     image: linuxserver/ffmpeg:amd64-latest
     container_name: rtsp-client.$DOMAIN
-    command: -re -stream_loop -1 -i /data/source.mp4 -c copy -s 1280x720 -r 30 -vcodec libx265 -an -f rtsp rtsp://rtsp.$DOMAIN:8554/teststream
+    command: -re -stream_loop -1 -rtsp_transport tcp -i /data/source.mp4 -c copy -s 1280x720 -r 30 -vcodec libx265 -an -f rtsp rtsp://rtsp.video-stream:8554/teststream
     environment:
       TZ: Asia/Bangkok
     volumes:
